@@ -33,9 +33,9 @@
                <td><?php echo $row['nama']; ?></td>
                <td><?php echo $row['prodi']; ?></td>
                <td>
-                <a href="<?php='FormEdit.php?id='.$row['id'];?>">Edit</a>
+                <a href="<?='FormEdit.php?id='.$row['id'];?>">Edit</a>
                 <br>
-                <a href="<?php='delete.php?id='.$row['id'];?>">Hapus</a>
+                <a href="<?='delete.php?id='.$row['id'];?>">Hapus</a>
                </td>
            </tr> 
            <?php   

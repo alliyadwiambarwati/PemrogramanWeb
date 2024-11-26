@@ -6,11 +6,11 @@
     <title>Form Edit</title>
 </head>
 <body>
-    <form action="<?php= 'update.php?id='.$_GET['id'];?> method ="POST">
+    <form action="<?='update.php?id='.$_GET['id'];?>" method ="POST">
     <label for="npm">Npm</label>
-    <input type="text" name="npm" value="<?php=$row['npm'];?>"/><br>
+    <input type="text" name="npm" value="<?=$row['npm'];?>"/><br>
     <label for="nama">Nama</label>
-    <input type="text" name="nama" value="<?php=$row['nama'];?>"/><br>
+    <input type="text" name="nama" value="<?=$row['nama'];?>"/><br>
     <label for="prodi">Prodi</label>
     <select name="prodi" id="">
         <option value="Sistem Informasi">Sistem Informasi</option>
