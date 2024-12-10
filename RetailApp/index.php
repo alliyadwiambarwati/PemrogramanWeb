@@ -1,3 +1,6 @@
+<?
+session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,20 +14,30 @@
         <div class="card w-25">
             <div class = "card-body">
                     <div class="card-title text-center">
-                    <h3>Retail Application</h3>
+                       <h3>Retail Application</h3>
                     <hr>
+
+                    </div class ="text-center text-danger">
+                      <?
+                      if(isset($_SESSION['pesan'])){
+                        echo $_SESSION['pesan'];
+                        session_unset();
+                      }
+                      ?>
+                    <div>
+
                     </div>
                     <form action="login.php" method="post">
                      <div class="mb-3">
-                    <label  class="form-label"for="username">username</label>
-                    <input class ="form-control"type="text" name="username"/>
+                        <label  class="form-label"for="username">username</label>
+                        <input class ="form-control"type="text" name="username"/>
                     </div>
                     <div class="mb-3">
-                    <label class="form-label" for="password">Password</label>
-                    <input class="form-control" type="text" name="password"/>
+                        <label class="form-label" for="password">Password</label>
+                        <input class="form-control" type="password" name="password"/>
                     </div>
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                    <button type="button" class="btn btn-outline-info">Login</button>
+                   <div class="d-grid gap-2">
+                        <button class="btn btn-primary py-3 ">Login</button>
                     </div>
                     </form>
             </div>
