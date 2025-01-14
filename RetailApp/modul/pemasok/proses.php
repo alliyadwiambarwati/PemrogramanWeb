@@ -1,28 +1,36 @@
-<?
-if($_SERVER['REQUEST_METHOD']=="POST"){
-    include "../../koneksi.php";
-    $namapemasok = $_POST['$namapemasok'];
+<?php
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    include "../../koneksi.php"; // Pastikan file koneksi sudah benar
+
+    // Ambil data dari form
+    $namapemasok = $_POST['namapemasok'];
     $alamat = $_POST['alamat'];
     $telepon = $_POST['telepon'];
     $status = $_POST['status'];
-    $aksi = $_GET ['aksi'];
-    if($aksi == "tambah"){
-        $sql = "INSERT INTO pemasok (nama_pemasok,alamat,telepon,status) VALUES ('$namapemasok','$alamat','$telepon','$status')";
-    }elseif($aksi == "edit"){
+    $aksi = $_GET['aksi'];
 
+    // Validasi aksi
+    if ($aksi == "tambah") {
+        $query = "INSERT INTO pemasok (nama_pemasok, alamat, telepon, status) VALUES ('$namapemasok', '$alamat', '$telepon', '$status')";
+    } elseif ($aksi == "edit") {
         $id = $_GET['id'];
-        $sql = "UPDATE pemasok SET nama_pemasok = '$namapemasok', alamat= '$alamat', telepon='$telepon', status = '$status' WHERE id_pemasok = '$id' ";
-
-    }elseif($aksi == "hapus"){
-
+        $query = "UPDATE pemasok SET nama_pemasok = '$namapemasok', alamat = '$alamat', telepon = '$telepon', status = '$status' WHERE id_pemasok = '$id'";
+    } elseif ($aksi == "hapus") {
         $id = $_GET['id'];
-        $sql = "DELETE FROM pemasok WHERE id_pemasok = '$id'";
-
+        $query = "DELETE FROM pemasok WHERE id_pemasok = '$id'";
+    } else {
+        die("Aksi tidak valid.");
     }
 
-    $mysqli->query($sql);
-
+    // Jalankan query
+    if ($mysqli->query($query)) {
+        echo "Proses berhasil.";
+    } else {
+        echo "Error: " . $mysqli->error;
+    }
 }
 
-header ('location : ../../dashboard.php?modul=pemasok');
+// Redirect ke halaman dashboard
+header('Location: ../../dashboard.php?modul=pemasok');
+exit();
 ?>
